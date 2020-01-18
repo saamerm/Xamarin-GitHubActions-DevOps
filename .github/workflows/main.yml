@@ -1,7 +1,13 @@
 name: CI on Push and Pull Request
 
-on: [push, pull_request]
-
+on: 
+  push:
+    tags:
+    - '*'
+  pull_request:
+    tags: 
+      - '*'
+      
 jobs:
 
   Android:
