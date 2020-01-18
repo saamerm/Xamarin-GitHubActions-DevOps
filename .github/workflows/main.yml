@@ -3,25 +3,7 @@ name: CI on Push and Pull Request
 on: [push, pull_request]
 
 jobs:
-  Practice:
 
-    runs-on: macos-latest
-    
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-    - name: Show what in there
-      run: |
-        ls
-    - name: Show what it's inside
-      run: |
-        cd ..
-        ls
   Android:
 
     runs-on: macos-latest
@@ -41,7 +23,7 @@ jobs:
       with:
         artifacts: "Blank/Blank.Android/bin/Debug/*.apk"
         
-  iOS Simulator:
+  iOS_Simulator:
 
     runs-on: macos-latest
     
@@ -55,7 +37,7 @@ jobs:
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
         
-  iOS Device:
+  iOS_Device:
 
     runs-on: macos-latest
     
