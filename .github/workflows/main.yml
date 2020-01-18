@@ -36,7 +36,9 @@ jobs:
         nuget restore
         cd Blank.Android
         msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
-  iOS:
+    - with:
+        artifacts: "Blank/Blank.Android/bin/Debug/*.apk"
+  iOS Simulator:
 
     runs-on: macos-latest
     
@@ -44,8 +46,24 @@ jobs:
 
     - uses: actions/checkout@v1
       
-    - name: iOS
+    - name: iOS Simulator
       run: |
         cd Blank
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        
+  iOS Device:
+
+    runs-on: macos-latest
+    
+    steps:
+
+    - uses: actions/checkout@v1
+      
+    - name: iOS Device
+      run: |
+        cd Blank
+        nuget restore
+        msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhone /p:Configuration=Debug
+    - with:
+        artifacts: "Blank/Blank.iOS/bin/iPhone/Debug/*.ipa"
