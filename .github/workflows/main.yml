@@ -36,8 +36,11 @@ jobs:
         nuget restore
         cd Blank.Android
         msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
-    - with:
+    - name: Create a Release APK
+      uses: ncipollo/release-action@v1
+      with:
         artifacts: "Blank/Blank.Android/bin/Debug/*.apk"
+        
   iOS Simulator:
 
     runs-on: macos-latest
@@ -65,5 +68,7 @@ jobs:
         cd Blank
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhone /p:Configuration=Debug
-    - with:
+    - name: Create a Release IPA
+      uses: ncipollo/release-action@v1
+      with:
         artifacts: "Blank/Blank.iOS/bin/iPhone/Debug/*.ipa"
