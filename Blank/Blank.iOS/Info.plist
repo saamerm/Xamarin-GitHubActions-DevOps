@@ -25,7 +25,7 @@
     <key>CFBundleDisplayName</key>
     <string>Blank</string>
     <key>CFBundleIdentifier</key>
-    <string>com.tfp.Blank</string>
+    <string>com.tfp.islandlanding</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>UILaunchStoryboardName</key>
