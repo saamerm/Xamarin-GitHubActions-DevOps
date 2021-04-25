@@ -1,4 +1,6 @@
-name: CI on Push and Pull Request
+name: 'Xamarin iOS Device, Simulator and Android'
+author: 'Saamer Mansoor'
+description: 'Set up a CI/CD pipeline for your iOS & Android using GitHub Actions workflow, regardless if it's using Xamarin Forms or Native'
 
 on: [push, pull_request]
 
@@ -110,3 +112,6 @@ jobs:
       with:
         name: iOS Device App
         path: Blank/Blank.iOS/bin/iPhone/Debug/Blank.iOS.app      
+branding:
+  icon: 'archive'
+  color: 'green'
