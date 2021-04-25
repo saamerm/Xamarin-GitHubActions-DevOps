@@ -49,7 +49,34 @@ jobs:
         cd Blank/Blank.Android/bin/Debug
         ls
 
-  iOS:
+  iOS Simulator:
+
+    runs-on: macos-latest
+    
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: iOS Simulator
+      run: |
+        cd Blank
+        nuget restore
+        msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        ls
+        
+    - uses: actions/upload-artifact@v2
+      with:
+        name: iOS Simulator App
+        path: Blank/Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
+        
+    - name: Checking file persistance
+      run: |
+        ls
+        cd Blank/Blank.iOS/bin/iPhoneSimulator/Debug
+        ls
+        
+ iOS:
 
     runs-on: macos-latest
     
@@ -86,28 +113,22 @@ jobs:
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
         cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles   
         
-    - name: iOS Simulator
-      run: |
-        cd Blank
-        nuget restore
-        msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
-        ls
-        
-    - uses: actions/upload-artifact@v2
-      with:
-        name: iOS Simulator App
-        path: Blank/Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
-        
-    - name: Checking file persistance
-      run: |
-        ls
-        cd Blank/Blank.iOS/bin/iPhoneSimulator/Debug
-        ls
-        
     - name: iOS Device
       run: |
         cd Blank
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhone /p:Configuration=Debug
         ls
-
+        cd Blank/Blank.iOS/bin/iPhone/Debug
+        ls
+        
+    - uses: actions/upload-artifact@v2
+      with:
+        name: iOS Simulator App
+        path: Blank/Blank.iOS/bin/iPhone/Debug/Blank.iOS.app
+        
+    - name: Checking file persistance
+      run: |
+        ls
+        cd Blank/Blank.iOS/bin/iPhone/Debug
+        ls
