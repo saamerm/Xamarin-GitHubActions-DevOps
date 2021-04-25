@@ -115,6 +115,7 @@ jobs:
         
     - name: iOS Device
       run: |
+        security find-identity -v -p codesigning
         cd Blank
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhone /p:Configuration=Debug
