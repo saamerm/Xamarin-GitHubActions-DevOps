@@ -67,7 +67,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
-        path: Blank/Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS
+        path: Blank/Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
         
     - name: Checking file persistance
       run: |
