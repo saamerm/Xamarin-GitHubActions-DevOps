@@ -49,7 +49,7 @@ jobs:
         cd Blank/Blank.Android/bin/Debug
         ls
 
-  iOS Simulator:
+  iOS_Simulator:
 
     runs-on: macos-latest
     
@@ -76,7 +76,7 @@ jobs:
         cd Blank/Blank.iOS/bin/iPhoneSimulator/Debug
         ls
         
-  iOS Device:
+  iOS_Device:
 
     runs-on: macos-latest
     
