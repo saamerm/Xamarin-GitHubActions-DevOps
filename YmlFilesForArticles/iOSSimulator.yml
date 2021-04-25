@@ -1,0 +1,17 @@
+name: CI on Push and Pull Request
+on: [push, pull_request]
+jobs:
+  iOS:
+    runs-on: macos-latest    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2        
+    - name: iOS Simulator
+      run: |
+        cd Blank
+        nuget restore
+        msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug        
+    - uses: actions/upload-artifact@v2
+      with:
+        name: iOS Simulator App
+        path: Blank/Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
