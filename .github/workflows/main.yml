@@ -52,10 +52,8 @@ jobs:
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
         ls
-        cd Blank.iOS/bin/iPhoneSimulator/Debug
-        ls
         
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
-        path: Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS
+        path: Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
