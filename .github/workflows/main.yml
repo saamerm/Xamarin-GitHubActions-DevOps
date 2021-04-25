@@ -1,9 +1,6 @@
 name: CI on Push and Pull Request
 
-on: 
-  push:
-    tags:
-    - '*'
+on: [push, pull_request]
 
 jobs:
   Practice:
@@ -39,6 +36,8 @@ jobs:
         nuget restore
         cd Blank.Android
         msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        ls
+        
   iOS:
 
     runs-on: macos-latest
@@ -52,3 +51,4 @@ jobs:
         cd Blank
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        ls
