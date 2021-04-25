@@ -120,7 +120,7 @@ jobs:
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhone /p:Configuration=Debug
         ls
-        cd Blank/Blank.iOS/bin/iPhone/Debug
+        cd Blank.iOS/bin/iPhone/Debug
         ls
         
     - uses: actions/upload-artifact@v2
