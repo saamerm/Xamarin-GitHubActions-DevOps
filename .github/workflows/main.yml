@@ -1,9 +1,6 @@
 name: CI on Push and Pull Request
 
-on: 
-  push:
-    tags:
-    - '*'
+on: [push, pull_request]
 
 jobs:
   Practice:
