@@ -76,7 +76,7 @@ jobs:
         cd Blank/Blank.iOS/bin/iPhoneSimulator/Debug
         ls
         
- iOS:
+  iOS Device:
 
     runs-on: macos-latest
     
