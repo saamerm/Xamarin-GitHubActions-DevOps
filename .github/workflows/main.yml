@@ -35,9 +35,20 @@ jobs:
         cd Blank
         nuget restore
         cd Blank.Android
-        msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
         ls
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Android App
+        path: Blank/Blank.Android/bin/Debug/com.tfp.blank-Signed.apk
         
+    - name: Checking file persistance
+      run: |
+        ls
+        cd Blank/Blank.Android/bin/Debug
+        ls
+
   iOS:
 
     runs-on: macos-latest
@@ -56,10 +67,10 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
-        path: Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS
+        path: Blank/Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
         
     - name: Checking file persistance
       run: |
         ls
-        cd Blank.iOS/bin/iPhoneSimulator/Debug
+        cd Blank/Blank.iOS/bin/iPhoneSimulator/Debug
         ls
