@@ -18,10 +18,11 @@ jobs:
     - name: Show what in there
       run: |
         ls
-    - name: Show what it's inside
+    - name: Show what is inside
       run: |
         cd ..
         ls
+        
   Android:
 
     runs-on: macos-latest
@@ -36,19 +37,12 @@ jobs:
         nuget restore
         cd Blank.Android
         msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
-        ls
 
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
         path: Blank/Blank.Android/bin/Debug/com.tfp.blank-Signed.apk
         
-    - name: Checking file persistance
-      run: |
-        ls
-        cd Blank/Blank.Android/bin/Debug
-        ls
-
   iOS_Simulator:
 
     runs-on: macos-latest
@@ -63,18 +57,11 @@ jobs:
         cd Blank
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
-        ls
         
     - uses: actions/upload-artifact@v2
       with:
         name: iOS Simulator App
         path: Blank/Blank.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
-        
-    - name: Checking file persistance
-      run: |
-        ls
-        cd Blank/Blank.iOS/bin/iPhoneSimulator/Debug
-        ls
         
   iOS_Device:
 
@@ -115,21 +102,11 @@ jobs:
         
     - name: iOS Device
       run: |
-        security find-identity -v -p codesigning
         cd Blank
         nuget restore
         msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhone /p:Configuration=Debug
-        ls
-        cd Blank.iOS/bin/iPhone/Debug
-        ls
-        
+
     - uses: actions/upload-artifact@v2
       with:
-        name: iOS Simulator App
-        path: Blank/Blank.iOS/bin/iPhone/Debug/Blank.iOS.app
-        
-    - name: Checking file persistance
-      run: |
-        ls
-        cd Blank/Blank.iOS/bin/iPhone/Debug
-        ls
+        name: iOS Device App
+        path: Blank/Blank.iOS/bin/iPhone/Debug/Blank.iOS.app      
