@@ -11,7 +11,7 @@ Right now, the file is published as an "artifact" ZIP file https://github.com/ac
 <img width="871" alt="image" src="https://user-images.githubusercontent.com/8262287/116001770-38336f00-a5c4-11eb-8857-9121c3f5774e.png">
 
 
-### Build you Android code & Publish the Signed APK from the build
+### Build your Android code & Publish the Signed APK from the build
 
 If you want to build and publish the APK, simply copy this into your repository's .github/workflows/main.yml file.
 Make sure to change Blank in all instances with your own Project/Solution name and change "com.tfp.blank" with the bundle identifier mentioned in your AndroidManifest file.
@@ -35,7 +35,7 @@ jobs:
         path: Blank/Blank.Android/bin/Debug/com.tfp.blank-Signed.apk        
 ```
 
-### Build you iOS code & Publish the simulator APP from the build
+### Build your iOS code & Publish the simulator APP from the build
 
 If you want to build and publish the simulator APP file, simply copy this into your repository's .github/workflows/main.yml file.
 Make sure to change Blank in all instances with your own Project/Solution name.
